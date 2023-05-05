@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     qApp->setStyle("Fusion");
     qApp->setStyleSheet("");
 
+    w.setWindowState(Qt::WindowFullScreen);
     w.show();
     return a.exec();
 }

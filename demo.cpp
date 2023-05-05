@@ -20,7 +20,7 @@ demo::demo(QWidget *parent) :
 
   //QGraphicsView view = ui->graphicsView;
   view->setRenderHint(QPainter::Antialiasing);
-  QImage image("/home/ireed/Downloads/20230801750_GOES16-ABI-FD-GEOCOLOR-10848x10848.jpg");
+  QImage image("/home/root/10848x10848.jpg");
   QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
   scene->addItem(item);
 
