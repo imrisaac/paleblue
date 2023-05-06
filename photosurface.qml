@@ -29,8 +29,8 @@ Window {
     ScrollView {
         id: flick
         anchors.fill: parent
-        contentWidth: 1080
-        contentHeight: 1080
+        contentWidth: width * root.surfaceViewportRatio
+        contentHeight: height * root.surfaceViewportRatio
         property int highestZ: 0
         Repeater {
             model: FolderListModel {
