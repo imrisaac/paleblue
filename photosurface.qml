@@ -133,8 +133,9 @@ Window {
                     onDoubleTapped: {
                         console.log("double tappy tap")
                         photoFrame.scale = 1080/photoFrame.width
-                        photoFrame.x = 0
-                        photoFrame.y = 0
+                        photoFrame.x = flick.contentWidth / 2
+                        photoFrame.y = flick.contentHeight / 2
+                        photoFrame.rotation = 0
                     }
                 }
 
@@ -190,5 +191,8 @@ Window {
         }
         else
             folderModel.folder = Qt.resolvedUrl("file:" + lastArg)
+
+        flick.contentY = flick.contentHeight / 2 - height / 2
+        flick.contentX = flick.contentWidth / 2 - width / 2
     }
 }
