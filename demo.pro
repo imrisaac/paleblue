@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = demo
 
-QT += core gui widgets
+QT += core gui widgets network
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -18,11 +18,13 @@ include($$PWD/QSwipeView/QSwipeView.pri)
 
 SOURCES += \
     demo.cpp \
+    filedownloader.cpp \
     graphicsviewzoom.cpp \
     main.cpp
 
 HEADERS += \
     demo.h \
+    filedownloader.h \
     graphicsviewzoom.h
 
 FORMS += \

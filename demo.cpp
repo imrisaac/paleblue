@@ -1,6 +1,7 @@
 #include "demo.h"
 #include "ui_demo.h"
 #include "graphicsviewzoom.h"
+#include "filedownloader.h"
 
 demo::demo(QWidget *parent) :
   QDialog(parent),
@@ -17,12 +18,18 @@ demo::demo(QWidget *parent) :
 
   QGraphicsView *view = ui->graphicsView_p6;
 
+  getImage();
+
+  QTimer *timer = new QTimer(this);
+  connect(timer, SIGNAL(timeout()), this, SLOT(getImage()));
+  timer->start(60*15*1000);
+
 
   //QGraphicsView view = ui->graphicsView;
   view->setRenderHint(QPainter::Antialiasing);
   QImage image("/home/ireed/Downloads/20230801750_GOES16-ABI-FD-GEOCOLOR-10848x10848.jpg");
-  QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-  scene->addItem(item);
+  _pixmap_item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+  scene->addItem(_pixmap_item);
 
   view->setCacheMode(QGraphicsView::CacheBackground);
   view->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
@@ -69,6 +76,25 @@ void demo::highVelocitySwipeCatch(){
 
 bool demo::eventFilter(QObject *object, QEvent *event) {
   qInfo() << "event type: " <<   event->type();
+}
+
+void demo::getImage(){
+  // GOES West
+  //QUrl imageUrl("https://cdn.star.nesdis.noaa.gov/GOES18/ABI/FD/GEOCOLOR/10848x10848.jpg");
+
+  // GOES East
+  QUrl imageUrl("https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/10848x10848.jpg");
+  m_pImgCtrl = new FileDownloader(imageUrl, this);
+  connect(m_pImgCtrl, SIGNAL (downloaded()), this, SLOT (loadImage()));
+  qInfo() << "get image";
+}
+
+void demo::loadImage(){
+  QImage image;
+  qInfo() << "image downloaded";
+  //buttonImage.loadFromData(m_pImgCtrl->downloadedData());
+  image.loadFromData(m_pImgCtrl->downloadedData());
+  _pixmap_item->setPixmap(QPixmap::fromImage(image));
 }
 
 demo::~demo()

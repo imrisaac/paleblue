@@ -1,6 +1,8 @@
 #ifndef DEMO_H
 #define DEMO_H
 
+#include "filedownloader.h"
+#include "qgraphicsitem.h"
 #include <QDialog>
 
 namespace Ui {
@@ -17,9 +19,15 @@ public:
 
 private:
     Ui::demo *ui;
+    QGraphicsPixmapItem* _pixmap_item;
+    FileDownloader *m_pImgCtrl;
     bool eventFilter(QObject* object, QEvent* event) override;
     void zoomedSignalCatch();
     void highVelocitySwipeCatch();
+
+private slots:
+    void loadImage();
+    void getImage();
 };
 
 #endif // DEMO_H
