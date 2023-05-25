@@ -9,3 +9,5 @@ mouse movement, flick behaviors and page indicator widget.
 
 Author: Tim Schneeberger
 License: MIT License
+
+https://code.qt.io/qt-apps/boot2qt-demos.git
