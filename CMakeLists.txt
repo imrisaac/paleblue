@@ -53,6 +53,7 @@ qt_add_qml_module(photosurfaceexample
       "resources/MomentumAnimation.qml"
     RESOURCES
       "resources/folder.png"
+      "resources/10848x10848.jpg"
 )
 
 install(TARGETS photosurfaceexample
