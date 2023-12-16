@@ -12,7 +12,7 @@ endif()
 
 set(INSTALL_EXAMPLEDIR "/home/root/photosurface")
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 Network DeviceUtilities)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -44,6 +44,8 @@ target_link_libraries(photosurfaceexample PRIVATE
     Qt::Gui
     Qt::Qml
     Qt::Quick
+    Qt::Network
+    Qt::DeviceUtilities
 )
 
 qt_add_qml_module(photosurfaceexample
