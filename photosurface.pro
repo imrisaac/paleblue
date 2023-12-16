@@ -1,8 +1,22 @@
 TEMPLATE = app
 
 QT += qml quick
-SOURCES += main.cpp
-RESOURCES += photosurface.qrc
+SOURCES += \
+	settingsmanager.cpp \
+	main.cpp \
+	qtbuttonimageprovider.cpp \
+
+HEADERS += \
+	settingsmanager.h \
+	qtbuttonimageprovider.h
+	
+RESOURCES += 
+	photosurface.qrc
+	
+OTHER_ILES += \
+	*.qml
+	resources/*
+	fonts/*
 
 target.path = $$[QT_INSTALL_EXAMPLES]/demos/photosurface
 INSTALLS += target
