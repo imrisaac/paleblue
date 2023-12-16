@@ -12,7 +12,7 @@ endif()
 
 set(INSTALL_EXAMPLEDIR "/home/root/photosurface")
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.5)
 
@@ -51,9 +51,25 @@ qt_add_qml_module(photosurfaceexample
     QML_FILES
       "photosurface.qml"
       "resources/MomentumAnimation.qml"
+      "WifiButton.qml"
+      "NetworkSettings/CustomSwitch.qml"
+      "NetworkSettings/NetworkDelegate.qml"
+      "NetworkSettings/NetworkListView.qml"
+      "NetworkSettings/NetworkSettingsPage.qml"
+      "NetworkSettings/PassphraseEnter.qml"
+      "NetworkSettings/QtButton.qml"
+      "NetworkSettings/ViewSettings.qml"
     RESOURCES
       "resources/folder.png"
-      "resources/10848x10848.jpg"
+      "resources/east_10848x10848.jpg"
+      "resources/west_10848x10848.jpg"
+      SOURCES imageitem.h imageitem.cpp
+      SOURCES filedownloader.h filedownloader.cpp
+      SOURCES paleblue.h paleblue.cpp
+      SOURCES timemanager.h timemanager.cpp
+      SOURCES settingsmanager.h settingsmanager.cpp
+      SOURCES qtbuttonimageprovider.h qtbuttonimageprovider.cpp
+      RESOURCES qml.qrc
 )
 
 install(TARGETS photosurfaceexample
